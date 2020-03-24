@@ -28,9 +28,11 @@ packages_install:
       - iptables
       - mc
       - ruby
+  {% if pillar['OS'] != 'amazonlinux' %}
+      - cloud-utils-growpart
+  {% endif %}
   {% if grains['os_family'] == 'RedHat' %}
       - snappy
-      - cloud-utils-growpart
     {% if pillar['OS'] != 'redhat7' %}
       - snappy-devel
     {% endif %}
@@ -48,15 +50,19 @@ packages_install:
   {% if pillar['OS'] in ('centos7', 'centos6', 'redhat7') %}
       - vim-common
   {% else %}
-      - vim
+      - vim-enhanced
   {% endif %}
   {% if grains['os_family'] != 'Suse' and grains['osmajorrelease'] |int != 12 %}
       - autossh
   {% endif %}
-      - ipa-client
       - openldap
       - openldap-clients
+  {% if pillar['OS'] in ('amazonlinux') %}
+      - aws-cli
+  {% else %}
       - awscli
+      - ipa-client
+  {% endif %}
 
 download_azcopy:
   archive.extracted:
