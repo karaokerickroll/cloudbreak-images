@@ -161,6 +161,17 @@ build-gov-aws-amazonlinux:
 	SALT_REPO_FILE="salt-repo-amzn.repo" \
 	./scripts/packer.sh build -only=gov-aws-amazonlinux $(PACKER_OPTS)
 
+build-gov-aws-amazonlinux2:
+	$(ENVS) \
+        AWS_AMI_REGIONS="$(AWS_GOV_AMI_REGIONS)" \
+        OS=amazonlinux2 \
+        OS_TYPE=amazonlinux2 \
+        ATLAS_ARTIFACT_TYPE=amazon \
+        SALT_INSTALL_OS=amazon \
+        SALT_REPO_FILE="salt-repo-amzn.repo" \
+        ./scripts/packer.sh build -only=gov-aws-amazonlinux2 $(PACKER_OPTS)
+
+
 build-aws-amazonlinux2:
 	$(ENVS) \
 	AWS_AMI_REGIONS="$(AWS_AMI_REGIONS)" \
