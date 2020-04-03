@@ -84,7 +84,7 @@ ap-northeast-1,ap-northeast-2,ap-south-1,ap-southeast-1,ap-southeast-2,ca-centra
 endef
 
 define AWS_GOV_AMI_REGIONS
-us-gov-west-1
+us-gov-west-1,us-gov-east-1
 endef
 
 define AWS_GOV_INSTANCE_PROFILE
